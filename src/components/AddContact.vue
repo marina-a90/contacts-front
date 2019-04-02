@@ -1,5 +1,6 @@
 <template>
     <form @submit.prevent="handleSubmit">
+    <!-- <form @submit.prevent="createContact(contact)"> // krace, direktno sa vuexa -->
         <input type="text" v-model="contact.first_name" placeholder="name"/>
         <input type="text" v-model="contact.last_name" placeholder="last name"/>
         <input type="text" v-model="contact.email" placeholder="email"/>
@@ -8,7 +9,7 @@
 </template>
 
 <script>
-import { contactsService } from '@/services/Contacts.js'
+import { mapActions } from 'vuex'
 
 export default {
     data() {
@@ -22,8 +23,10 @@ export default {
     }, 
 
     methods: {
+        ...mapActions(['createContact']),
+
         handleSubmit() {
-            contactsService.create(this.contact);
+            this.createContact(this.contact);
         }
     }
 }
