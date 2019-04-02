@@ -13,6 +13,17 @@ class Contacts {
         // bez return-a se poziv desi, al ne sacuva, tj. nista se zapravo ne desi
         // to bi u stvari bio promise samo
     }
+
+    create(contact) {
+        //ne mora pojedinacno da mu se salje first_name... nego ceo objecat - contact
+        return axios.post('http://localhost:8000/api/contacts', 
+        // {
+            // ovde ocekuje da primi objekat. posto je gore contact, contact
+            contact
+        // }
+        )
+        // post slicno kao get, samo sto prosledjuje parametar
+    }
 }
 
 export const contactsService = new Contacts();

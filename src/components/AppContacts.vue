@@ -24,6 +24,7 @@ export default {
     //     contactsService.getAll()
     //         .then(response => {
     //              console.log(response);
+    //              this.contacts = response.data;
     //         })
     //         .catch(error => {
 
