@@ -19,7 +19,7 @@ const store = new Vuex.Store({
     }, 
 
     ADD_CONTACT (state, contact) {
-      state.contacts.unshift(contact);
+      state.contacts.push(contact);
     }
   }, 
   actions: {
