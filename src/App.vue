@@ -1,19 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AppContacts />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import { contacts } from '@/services/Contacts.js'         // @ je src folder
-// ovde je importovana i instanca servisa pa ce se on okinuti
+import AppContacts from './components/AppContacts.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    AppContacts
   }
 }
 </script>
