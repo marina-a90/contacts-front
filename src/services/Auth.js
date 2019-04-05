@@ -25,7 +25,7 @@ class Auth {
 
 
             // i postaviti token na Authorization header
-            axios.defaults.headers.common['Authorization'] = 'Bearer ${token}'
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
             // dok se ne refr. str. header je nakacen na axios
         }
         catch (e) {
