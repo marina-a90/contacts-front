@@ -1,6 +1,17 @@
 import axios from 'axios'
 
 class Auth {
+
+    constructor () {
+        const token = localStorage.getItem('token')
+        // proveravam da li imam token
+
+        if (token) {
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+            //ovo mi se 2 puta ponavlja, mogu ga prebaciti u metodu
+        }
+    }
+
     // async login (email, password) {
     async login (credencials) {
         try {
