@@ -1,21 +1,15 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <AddContact />
-    <AppContacts />
+    <router-view />
   </div>
 </template>
 
 <script>
 import AddContact from './components/AddContact.vue'
-import AppContacts from './components/AppContacts.vue'
 
 export default {
-  name: 'app',
-  components: {
-    AppContacts, 
-    AddContact
-  }
+  name: 'app'
 }
 </script>
 

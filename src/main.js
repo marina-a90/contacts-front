@@ -1,10 +1,37 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 import App from './App.vue'
 import Vuex from 'vuex'
 
+import AppLogin from '@/components/AppLogin'
+import AppContacts from '@/components/AppContacts'
+
 Vue.use(Vuex)
+Vue.use(VueRouter)
+
+const routes = [
+  {
+    path: '/login', 
+    component: AppLogin
+  }, 
+  {
+    path: '/', 
+    redirect: '/contacts'
+  }, 
+  {
+    path: '/contacts', 
+    component: AppContacts
+  }
+]
+
+const router = new VueRouter({
+  routes, 
+  mode: 'history'
+})
+
 
 import { contactsService } from '@/services/Contacts.js'
+import { authService } from '@/services/Auth.js'
 
 const store = new Vuex.Store({
   state: {
@@ -42,6 +69,10 @@ const store = new Vuex.Store({
       //   return response.data
       // ])
       // pregazim ceo niz
+    },
+
+    async login (context, credencials) {
+      await authService.login(credencials)
     }
   }
 })
@@ -49,6 +80,7 @@ const store = new Vuex.Store({
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   store,
   render: h => h(App),
 }).$mount('#app')
