@@ -29,6 +29,15 @@ export default {
             })
             this.$router.push('/contacts')
         }
+    }, 
+
+    // van metoda
+    beforeRouteEnter (to, from, next) {
+        // ocekuje to, from, next TIM REDOSLEDOM, iako ne koristim sve
+        next(vm => {
+            vm.email = 'ispis pre kreiranja rute'
+            // pre nego sto udje u rutu ce da ispise kao email ...
+        })
     }
 }
 </script>

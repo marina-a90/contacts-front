@@ -5,6 +5,9 @@
                 {{ contact.first_name }}
             </li>
         </ul>
+        <div>
+            <button @click="handleLogout">Log out</button>
+        </div>
     </div>
 </template>
 
@@ -52,8 +55,16 @@ export default {
 
     methods: {
         ...mapActions([
-            'fetchContacts'
-        ])
+            'fetchContacts', 
+            'logout' 
+            // direktno bi moglo da bude pozvana na dugmetu - al zbog redirekcije ne moze
+            // mora handleLogout na dugmetu
+        ]), 
+
+        handleLogout () {
+            this.logout()
+            this.$router.push('/login')
+        }
     }, 
 
     computed: {

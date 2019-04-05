@@ -16,17 +16,34 @@ const routes = [
   }, 
   {
     path: '/', 
-    redirect: '/contacts'
+    redirect: '/contacts', 
+    meta: {
+      requiresAuth: true
+    }
   }, 
   {
     path: '/contacts', 
-    component: AppContacts
+    component: AppContacts, 
+    meta: {
+      requiresAuth: true
+    }
   }
 ]
 
 const router = new VueRouter({
   routes, 
-  mode: 'history'
+  mode: 'history', 
+  beforeEach (to, from, next) {
+    // if (to.path === "/contacts") //moze ovako, mada je previse "peske" za puno ruta
+    
+    // console.log(to.meta)
+    if (to.meta.requiresAuth && !authService.isAuthenticated) {
+      next('/login')
+    }
+    else {
+      next()
+    }
+  }
 })
 
 
@@ -73,6 +90,10 @@ const store = new Vuex.Store({
 
     async login (context, credencials) {
       await authService.login(credencials)
+    }, 
+
+    logout (context) {
+      authService.logout()
     }
   }
 })

@@ -45,7 +45,16 @@ class Auth {
     }
 
     isAuthenticated () {
-        //
+        //proveravam da li je user ulogovan, da mu ne dozvolim npr. da ide na login str ako jeste
+        // return localStorage.getItem('token')
+        // ako postoji token, vratice ga a ako ne, null
+        // da bi bio bas boolean, dupla negacija
+        return !!localStorage.getItem('token')
+    }
+
+    logout () {
+        localStorage.removeItem('token')
+        axios.post('http://localhost:8000/api/auth/logout') // radi i bez ovog, al treba
     }
 }
 
